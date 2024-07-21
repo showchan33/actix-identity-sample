@@ -1,8 +1,8 @@
-use std::{future::Future, pin::Pin, rc::Rc};
-use actix_web::HttpResponse;
-use actix_web::dev::{forward_ready, Service, ServiceRequest, ServiceResponse, Transform};
-use actix_utils::future::{ready, Ready};
 use actix_identity::IdentityExt;
+use actix_utils::future::{ready, Ready};
+use actix_web::dev::{forward_ready, Service, ServiceRequest, ServiceResponse, Transform};
+use actix_web::HttpResponse;
+use std::{future::Future, pin::Pin, rc::Rc};
 
 pub struct AuthMiddleware;
 
@@ -23,7 +23,7 @@ where
     }))
   }
 }
-pub struct InnerAuthMiddleware<S>{
+pub struct InnerAuthMiddleware<S> {
   service: Rc<S>,
 }
 
@@ -48,9 +48,8 @@ where
 
       if path == "/login" || path == "/" {
         unauthorized = false;
-      }
-      else if let Ok(id) = id_wrapped {
-        if id.id().is_ok(){
+      } else if let Ok(id) = id_wrapped {
+        if id.id().is_ok() {
           unauthorized = false;
         }
       }
@@ -65,7 +64,7 @@ where
           "Unauthorized",
           HttpResponse::Unauthorized().body("Unauthorized"),
         )
-        .into()
+        .into(),
       )
     })
   }
