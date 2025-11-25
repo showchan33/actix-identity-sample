@@ -23,7 +23,7 @@ cargo run --release
 | --- | --- | --- |
 | ``/`` | not required | Public page accessible to all |
 | ``/login`` | not required | Login page. After successful authentication, redirect to ``/welcome`` |
-| ``/logout`` | required | Logout pabe. Redirect to ``/`` |
+| ``/logout`` | required | Logout page. Redirect to ``/`` |
 | ``/welcome`` | required | Display user ID after authentication |
 | ``/secret`` | required | Only authenticated users can access |
 
